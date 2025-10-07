@@ -3,68 +3,188 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Holy Spirit Home — Dépose ton sujet de prière</title>
+<title>Holy Spirit Home — La Maison de l’Esprit Saint</title>
+<meta name="description" content="Holy Spirit Home - La Maison de l'Esprit Saint — Rejoins-nous dans la prière et la communion avec le Saint-Esprit." />
 <style>
-  body {font-family: Arial, sans-serif; margin:0; background:#fff; color:#222;}
-  header {display:flex; align-items:center; justify-content:space-between; padding:15px 30px; background:#f8f8f8; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
-  .brand {display:flex; align-items:center; gap:15px;}
-  .brand img {height:60px;}
-  .banner {text-align:center; background:linear-gradient(to right, #00b4ff, #0070f3); color:white; padding:40px 10px;}
-  main {max-width:800px; margin:30px auto; padding:0 20px;}
-  .card {background:#fafafa; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05); margin-bottom:20px;}
-  .btn {padding:10px 20px; border:none; border-radius:6px; cursor:pointer; background:#0070f3; color:white; font-weight:bold;}
-  textarea, input {width:100%; padding:10px; margin:6px 0; border-radius:6px; border:1px solid #ddd;}
-  footer {text-align:center; padding:20px; font-size:13px; color:#666; border-top:1px solid #eee;}
+  :root {
+    --primary:#0070f3;
+    --accent:#00b4ff;
+    --bg:#f9fbff;
+    --text:#222;
+    --muted:#555;
+  }
+  body {
+    font-family:'Segoe UI', Arial, sans-serif;
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  header {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:15px 30px;
+    background:#fff;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+    position:sticky; top:0; z-index:10;
+  }
+  .brand {display:flex; align-items:center; gap:12px;}
+  .brand img {height:60px; width:auto;}
+  nav {display:flex; gap:10px;}
+  .btn {
+    padding:10px 16px; border:none; border-radius:6px;
+    background:var(--primary); color:#fff; font-weight:600; cursor:pointer;
+  }
+  .btn:hover {opacity:0.9;}
+  .banner {
+    text-align:center;
+    background:linear-gradient(120deg, var(--accent), var(--primary));
+    color:white;
+    padding:60px 15px 50px 15px;
+  }
+  .banner h2 {
+    font-size:32px; margin-bottom:8px;
+  }
+  .banner p {font-size:18px;}
+  main {max-width:1100px; margin:40px auto; padding:0 20px;}
+  section {margin-bottom:40px;}
+  .card {
+    background:white; padding:24px; border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  }
+  h2.section-title {
+    color:var(--primary); margin-top:0; margin-bottom:16px;
+  }
+  .columns {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+  }
+  .verse {
+    background:#f1f6ff; padding:14px; border-radius:10px;
+    border-left:4px solid var(--accent);
+  }
+  .steps {display:flex; gap:12px; flex-wrap:wrap;}
+  .step {
+    flex:1; min-width:120px;
+    background:#fff; border:1px solid #e5e9ff;
+    padding:14px; border-radius:10px; text-align:center;
+  }
+  .step strong {display:block; font-size:22px; color:var(--primary);}
+  form {
+    display:grid; gap:10px; margin-top:10px;
+  }
+  input, textarea {
+    width:100%; padding:10px; border:1px solid #ccc; border-radius:8px;
+    font-size:15px; background:#fff;
+  }
+  textarea {min-height:120px; resize:vertical;}
   .success, .error {margin-top:10px; padding:10px; border-radius:6px;}
-  .success {background:#e7ffe7; color:#006400;}
-  .error {background:#ffe7e7; color:#8b0000;}
+  .success {background:#e7ffe7; color:#056430;}
+  .error {background:#ffeaea; color:#8b0000;}
+  footer {
+    background:#fff; padding:20px; text-align:center;
+    border-top:1px solid #eee; color:#777; font-size:14px;
+  }
+  @media(max-width:768px){
+    .banner h2{font-size:26px;}
+  }
 </style>
 </head>
 <body>
+
 <header>
   <div class="brand">
     <img src="logo.png" alt="Logo Holy Spirit Home">
-    <h1>Holy Spirit Home</h1>
+    <div>
+      <h1 style="margin:0;font-size:20px;">Holy Spirit Home</h1>
+      <small style="color:var(--muted);">La Maison de l’Esprit Saint</small>
+    </div>
   </div>
   <nav>
-    <button class="btn" onclick="scrollToForm()">Déposer un sujet</button>
+    <button class="btn" onclick="scrollToForm()">Dépose ton sujet</button>
+    <button class="btn" onclick="scrollToContact()">Nous contacter</button>
   </nav>
 </header>
 
 <div class="banner">
-  <h2>La Maison de l'Esprit Saint</h2>
+  <h2>La Maison de l’Esprit Saint</h2>
   <p>Rejoins-nous dans la prière et la communion avec le Saint-Esprit.</p>
 </div>
 
 <main>
   <section class="card">
-    <h3>Dépose ton sujet de prière</h3>
+    <h2 class="section-title">Notre Mission Spirituelle — Aller en profondeur</h2>
+    <p>Accompagner chaque croyant dans une relation authentique et profonde avec le Saint-Esprit. Nous ne cherchons pas la superficialité, mais la profondeur spirituelle et la transformation intérieure.</p>
+  </section>
+
+  <section class="card">
+    <h2 class="section-title">Versets Bibliques Inspirants</h2>
+    <div class="columns">
+      <div class="verse"><strong>Actes 1:8</strong><br>« Mais vous recevrez une puissance, le Saint-Esprit survenant sur vous... »</div>
+      <div class="verse"><strong>Romains 8:14</strong><br>« Car tous ceux qui sont conduits par l'Esprit de Dieu sont fils de Dieu. »</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="section-title">L’Exemple de l’Apôtre Paul</h2>
+    <p>Une transformation radicale — de persécuteur à missionnaire majeur. Son exemple nous encourage à vivre une soumission totale à l’Esprit.</p>
+    <div class="steps">
+      <div class="step"><strong>1</strong>Conversion</div>
+      <div class="step"><strong>2</strong>Remplissage</div>
+      <div class="step"><strong>3</strong>Mission</div>
+      <div class="step"><strong>4</strong>Héritage</div>
+    </div>
+  </section>
+
+  <section id="form-section" class="card">
+    <h2 class="section-title">Dépose ton sujet de prière</h2>
+    <p>Partage ton prénom (ou reste anonyme), décris ton sujet et laisse un email si tu veux un retour. Notre équipe intercédera pour toi.</p>
     <form id="prayerForm">
       <label>Nom (ou Anonyme)</label>
-      <input type="text" id="name" name="name" placeholder="Ex: Marie" />
+      <input type="text" id="name" placeholder="Ex: Marie" />
       <label>Email</label>
-      <input type="email" id="email" name="email" placeholder="name@example.com" />
+      <input type="email" id="email" placeholder="name@example.com" />
       <label>Ton sujet de prière</label>
-      <textarea id="subjectText" name="subjectText" required></textarea>
+      <textarea id="subjectText" required></textarea>
       <button type="submit" class="btn">Envoyer</button>
       <div id="status"></div>
     </form>
   </section>
+
+  <section class="card">
+    <h2 class="section-title">Témoignages</h2>
+    <p><em>« J'étais dans une profonde dépression, mais après avoir rencontré le Saint-Esprit à Holy Spirit Home, ma vie a complètement changé. » — Marie K., Yamoussoukro</em></p>
+    <p><em>« Le Saint-Esprit m’a délivré de l’addiction et m’a restauré. » — Jean-Paul D., Abidjan</em></p>
+  </section>
+
+  <section id="contact" class="card">
+    <h2 class="section-title">Contact & Réseaux</h2>
+    <p><strong>Adresse :</strong> Holy Spirit Home — Yamoussoukro, Côte d'Ivoire</p>
+    <p><strong>Téléphone :</strong> <a href="tel:+2250705565174">+225 07 05 56 51 74</a></p>
+    <p><strong>Email :</strong> <a href="mailto:goitatoperetsin@gmail.com">goitatoperetsin@gmail.com</a></p>
+    <div style="margin-top:10px;">
+      <a href="#" class="btn">Facebook</a>
+      <a href="#" class="btn">YouTube</a>
+      <a href="#" class="btn">WhatsApp</a>
+    </div>
+  </section>
 </main>
 
 <footer>
-  © 2025 Holy Spirit Home — La Maison de l'Esprit Saint.
+  © 2025 Holy Spirit Home — La Maison de l’Esprit Saint. Tous droits réservés.
 </footer>
 
 <script>
 function scrollToForm(){
-  document.getElementById('prayerForm').scrollIntoView({behavior:'smooth'});
+  document.getElementById('form-section').scrollIntoView({behavior:'smooth'});
+}
+function scrollToContact(){
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
 }
 
 document.getElementById('prayerForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
   const data = {
-    name: document.getElementById('name').value,
+    name: document.getElementById('name').value || "Anonyme",
     email: document.getElementById('email').value,
     subjectText: document.getElementById('subjectText').value
   };
@@ -81,12 +201,13 @@ document.getElementById('prayerForm').addEventListener('submit', async (e)=>{
       status.innerHTML = '<div class="success">🙏 Sujet envoyé avec succès. Nous prierons pour toi.</div>';
       e.target.reset();
     } else {
-      status.innerHTML = '<div class="error">Erreur lors de l'envoi.</div>';
+      status.innerHTML = '<div class="error">Erreur lors de l’envoi.</div>';
     }
   } catch(err){
     status.innerHTML = '<div class="error">Impossible de contacter le serveur.</div>';
   }
 });
 </script>
+
 </body>
 </html>
