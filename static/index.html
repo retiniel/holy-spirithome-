@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Holy Spirit Home — Dépose ton sujet de prière</title>
+<style>
+  body {font-family: Arial, sans-serif; margin:0; background:#fff; color:#222;}
+  header {display:flex; align-items:center; justify-content:space-between; padding:15px 30px; background:#f8f8f8; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+  .brand {display:flex; align-items:center; gap:15px;}
+  .brand img {height:60px;}
+  .banner {text-align:center; background:linear-gradient(to right, #00b4ff, #0070f3); color:white; padding:40px 10px;}
+  main {max-width:800px; margin:30px auto; padding:0 20px;}
+  .card {background:#fafafa; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05); margin-bottom:20px;}
+  .btn {padding:10px 20px; border:none; border-radius:6px; cursor:pointer; background:#0070f3; color:white; font-weight:bold;}
+  textarea, input {width:100%; padding:10px; margin:6px 0; border-radius:6px; border:1px solid #ddd;}
+  footer {text-align:center; padding:20px; font-size:13px; color:#666; border-top:1px solid #eee;}
+  .success, .error {margin-top:10px; padding:10px; border-radius:6px;}
+  .success {background:#e7ffe7; color:#006400;}
+  .error {background:#ffe7e7; color:#8b0000;}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="logo.png" alt="Logo Holy Spirit Home">
+    <h1>Holy Spirit Home</h1>
+  </div>
+  <nav>
+    <button class="btn" onclick="scrollToForm()">Déposer un sujet</button>
+  </nav>
+</header>
+
+<div class="banner">
+  <h2>La Maison de l'Esprit Saint</h2>
+  <p>Rejoins-nous dans la prière et la communion avec le Saint-Esprit.</p>
+</div>
+
+<main>
+  <section class="card">
+    <h3>Dépose ton sujet de prière</h3>
+    <form id="prayerForm">
+      <label>Nom (ou Anonyme)</label>
+      <input type="text" id="name" name="name" placeholder="Ex: Marie" />
+      <label>Email</label>
+      <input type="email" id="email" name="email" placeholder="name@example.com" />
+      <label>Ton sujet de prière</label>
+      <textarea id="subjectText" name="subjectText" required></textarea>
+      <button type="submit" class="btn">Envoyer</button>
+      <div id="status"></div>
+    </form>
+  </section>
+</main>
+
+<footer>
+  © 2025 Holy Spirit Home — La Maison de l'Esprit Saint.
+</footer>
+
+<script>
+function scrollToForm(){
+  document.getElementById('prayerForm').scrollIntoView({behavior:'smooth'});
+}
+
+document.getElementById('prayerForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    subjectText: document.getElementById('subjectText').value
+  };
+  const status = document.getElementById('status');
+  status.innerHTML = '';
+  try {
+    const res = await fetch('/send_prayer', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    if(result.success){
+      status.innerHTML = '<div class="success">🙏 Sujet envoyé avec succès. Nous prierons pour toi.</div>';
+      e.target.reset();
+    } else {
+      status.innerHTML = '<div class="error">Erreur lors de l'envoi.</div>';
+    }
+  } catch(err){
+    status.innerHTML = '<div class="error">Impossible de contacter le serveur.</div>';
+  }
+});
+</script>
+</body>
+</html>
